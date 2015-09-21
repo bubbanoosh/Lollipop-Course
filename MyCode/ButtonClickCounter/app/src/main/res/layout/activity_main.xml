@@ -15,15 +15,15 @@
         android:text="Circuit"
         android:id="@+id/btnCircuit"
         android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="83dp" />
+        android:layout_alignRight="@+id/btnWorkout"
+        android:layout_alignEnd="@+id/btnWorkout" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="HIIT"
         android:id="@+id/btnHiit"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/btnCircuit"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -31,8 +31,25 @@
         android:layout_height="wrap_content"
         android:text="Workout"
         android:id="@+id/btnWorkout"
-        android:layout_marginTop="76dp"
         android:layout_below="@+id/btnHiit"
         android:layout_alignLeft="@+id/btnHiit"
         android:layout_alignStart="@+id/btnHiit" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RESET"
+        android:id="@+id/btnReset"
+        android:layout_marginBottom="52dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text=""
+        android:id="@+id/textViewLarge"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

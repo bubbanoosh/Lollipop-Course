@@ -15,11 +15,14 @@ public class MainActivity extends AppCompatActivity {
     private Button circuitButton;
     private Button hiitButton;
     private Button workoutButton;
+    private Button resetButton;
     private TextView textTopMessage;
+    private TextView textLarge;
 
     private int circuitClicked = 0;
     private int hiitClicked = 0;
     private int workoutClicked = 0;
+    private boolean beginAgain = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +35,16 @@ public class MainActivity extends AppCompatActivity {
         circuitButton = (Button) findViewById(R.id.btnCircuit);
         hiitButton = (Button) findViewById(R.id.btnHiit);
         workoutButton = (Button) findViewById(R.id.btnWorkout);
+        resetButton = (Button) findViewById(R.id.btnReset);
         textTopMessage = (TextView) findViewById(R.id.textView);
+        textLarge = (TextView) findViewById(R.id.textViewLarge);
 
         //EW. Add the click listeners
         View.OnClickListener circuitButtonOnClickListener  = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (beginAgain) blankLargeText();;
+                circuitClicked++;
                 String totes = Integer.toString(circuitClicked);
                 String totesMessage = "Circuit clicked " + totes + " time" ;
                 totesMessage += (circuitClicked > 1)? "s." : ".";
@@ -47,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener hiitButtonOnClickListener  = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (beginAgain) blankLargeText();;
+                hiitClicked++;
                 String totes = Integer.toString(hiitClicked);
                 String totesMessage = "Hiit clicked " + totes + " time" ;
                 totesMessage += (hiitClicked > 1)? "s." : ".";
@@ -56,17 +65,40 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener workoutButtonOnClickListener  = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (beginAgain) blankLargeText();;
+                workoutClicked++;
                 String totes = Integer.toString(workoutClicked);
                 String totesMessage = "Workout clicked " + totes + " time" ;
                 totesMessage += (workoutClicked > 1)? "s." : ".";
                 textTopMessage.setText(totesMessage);
             }
         };
-
+        View.OnClickListener resetButtonOnClickListener = new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                beginAgain = true;
+                resetAll(true);
+            }
+        };
         //EW. Register the Listeners
         circuitButton.setOnClickListener(circuitButtonOnClickListener);
         hiitButton.setOnClickListener(hiitButtonOnClickListener);
         workoutButton.setOnClickListener(workoutButtonOnClickListener);
+        resetButton.setOnClickListener(resetButtonOnClickListener);
+    }
+
+    protected void resetAll(boolean blankTextTop)
+    {
+        circuitClicked = hiitClicked = workoutClicked = 0;
+        if (blankTextTop) textTopMessage.setText("");
+        textLarge.setText("RESET THAT SHIT!");
+    }
+
+    protected void blankLargeText()
+    {
+        beginAgain = false;
+        textTopMessage.setText("This is a really basic freaking APP...");
+        textLarge.setText("");
     }
 
     @Override
@@ -93,8 +125,10 @@ public class MainActivity extends AppCompatActivity {
             message += toStringMessage;
 
             if (circuitClicked > 0 || hiitClicked > 0 || workoutClicked > 0) {
-                message = textTopMessage.getText().toString();
+                int totals = circuitClicked + hiitClicked + workoutClicked;
+                message = "Total buttons clicked is " + Integer.toString(totals);
             }
+
 
             Toast toastMessage = Toast.makeText(this, message, Toast.LENGTH_LONG);
             toastMessage.show();
