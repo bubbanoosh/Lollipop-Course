@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Button Click Counter</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="button_circuit_name">Circuit</string>
+    <string name="button_hiit_name">HIIT</string>
+    <string name="button_name_workout">Workout</string>
+    <string name="button_name_reset">RESET</string>
 </resources>

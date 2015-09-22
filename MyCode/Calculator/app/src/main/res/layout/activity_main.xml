@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/textEntry1"
+        android:id="@+id/etxtOperand1"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="25dp" />
 
@@ -31,15 +31,38 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/txtEntry2"
+        android:id="@+id/etxtOperand2"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="4dp" />
 
     <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center">
+        android:gravity="center_horizontal">
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:id="@+id/btn1"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            android:id="@+id/btn2"
+            tools:ignore="HardcodedText" />
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            android:id="@+id/btn3"
+            tools:ignore="HardcodedText" />
 
         <Button
             android:layout_width="wrap_content"
@@ -48,6 +71,35 @@
             android:id="@+id/plus"
             tools:ignore="ButtonStyle,HardcodedText"
             style="?android:attr/buttonStyleSmall" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4"
+            android:id="@+id/btn4"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:id="@+id/btn5"
+            tools:ignore="HardcodedText" />
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6"
+            android:id="@+id/btn6"
+            tools:ignore="HardcodedText" />
 
         <Button
             android:layout_width="wrap_content"
@@ -56,6 +108,35 @@
             android:id="@+id/minus"
             tools:ignore="ButtonStyle,HardcodedText"
             style="?android:attr/buttonStyleSmall" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7"
+            android:id="@+id/btn7"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8"
+            android:id="@+id/btn8"
+            tools:ignore="HardcodedText" />
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9"
+            android:id="@+id/btn9"
+            tools:ignore="HardcodedText" />
 
         <Button
             android:layout_width="wrap_content"
@@ -64,6 +145,36 @@
             android:id="@+id/divide"
             tools:ignore="ButtonStyle,HardcodedText"
             style="?android:attr/buttonStyleSmall" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/btn0"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="."
+            android:id="@+id/dot"
+            tools:ignore="HardcodedText" />
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="="
+            android:id="@+id/equals"
+            tools:ignore="HardcodedText" />
 
         <Button
             android:layout_width="wrap_content"
@@ -78,7 +189,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Result"
+        android:text="@string/textview_text_result"
         android:id="@+id/textView"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp" />
@@ -90,6 +201,7 @@
         android:text="0.00"
         android:id="@+id/txtResult"
         android:gravity="center"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="50dp"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>
