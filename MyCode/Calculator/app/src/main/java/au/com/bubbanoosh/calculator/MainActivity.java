@@ -24,7 +24,9 @@ public class MainActivity extends AppCompatActivity {
     private Button btn9;
     private Button btn0;
     private Button btnDot;
+    private Button btnPlus;
     private Button btnMinus;
+    private Button btnDivide;
     private Button btnMultiply;
     private Button btnClear;
     private String value1 = "";
@@ -50,10 +52,10 @@ public class MainActivity extends AppCompatActivity {
         btn9 = (Button) findViewById(R.id.btn9);
         btn0 = (Button) findViewById(R.id.btn0);
         btnDot = (Button) findViewById(R.id.dot);
-        btnClear = (Button) findViewById(R.id.btnClear);
-        Button btnPlus = (Button) findViewById(R.id.plus);
+        btnClear = (Button) findViewById(R.id.clear);
+        btnPlus = (Button) findViewById(R.id.plus);
         btnMinus = (Button) findViewById(R.id.minus);
-        Button btnDivide = (Button) findViewById(R.id.divide);
+        btnDivide = (Button) findViewById(R.id.divide);
         btnMultiply = (Button) findViewById(R.id.multiply);
 
         //EW. SET and REGISTER the listener both
