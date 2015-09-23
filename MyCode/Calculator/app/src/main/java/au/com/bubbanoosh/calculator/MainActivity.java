@@ -8,11 +8,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView operand1, operand2, txtResult;
-    private Button btn1, btn2, btn3, btn4 ,btn5, btn6, btn7, btn8, btn9, btn0, btnDot, btnEquals, btnPlus, btnMinus, btnDivide, btnMultiply;
+    private Button btn1;
+    private Button btn2;
+    private Button btn3;
+    private Button btn4;
+    private Button btn5;
+    private Button btn6;
+    private Button btn7;
+    private Button btn8;
+    private Button btn9;
+    private Button btn0;
+    private Button btnDot;
+    private Button btnMinus;
+    private Button btnMultiply;
+    private Button btnClear;
     private String value1 = "";
     private String value2 = "";
 
@@ -36,118 +50,184 @@ public class MainActivity extends AppCompatActivity {
         btn9 = (Button) findViewById(R.id.btn9);
         btn0 = (Button) findViewById(R.id.btn0);
         btnDot = (Button) findViewById(R.id.dot);
-        btnEquals = (Button) findViewById(R.id.equals);
-        btnPlus = (Button) findViewById(R.id.plus);
+        btnClear = (Button) findViewById(R.id.btnClear);
+        Button btnPlus = (Button) findViewById(R.id.plus);
         btnMinus = (Button) findViewById(R.id.minus);
-        btnDivide = (Button) findViewById(R.id.divide);
+        Button btnDivide = (Button) findViewById(R.id.divide);
         btnMultiply = (Button) findViewById(R.id.multiply);
 
         //EW. SET and REGISTER the listener both
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double double1 = validDouble(operand1.getText().toString());
-                double double2 = validDouble(operand2.getText().toString());
+                if ((operand1.getText().length() > 0) && (operand2.getText().length() > 0)) {
+                    double double1 = validDouble(operand1.getText().toString());
+                    double double2 = validDouble(operand2.getText().toString());
 
-                double result = double1 + double2;
-                txtResult.setText(Double.toString(result));
+                    double result = double1 + double2;
+                    txtResult.setText(Double.toString(result));
 
-                value1 = "0";
-                value2 = "0";
-                operand1.setText(value1.toString());
-                operand2.setText(value2.toString());
+                    resetValues();
+                } else {
+                    Toast.makeText(MainActivity.this, "Please enter stuff", Toast.LENGTH_LONG).show();
+                }
             }
         });
         //EW. SET and REGISTER the listener both
         btnMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double double1 = validDouble(operand1.getText().toString());
-                double double2 = validDouble(operand2.getText().toString());
+                if ((operand1.getText().length()>0) && (operand2.getText().length()>0)) {
+                    double double1 = validDouble(operand1.getText().toString());
+                    double double2 = validDouble(operand2.getText().toString());
 
-                double result = double1 - double2;
-                txtResult.setText(Double.toString(result));
+                    double result = double1 - double2;
+                    txtResult.setText(Double.toString(result));
 
-                value1 = "0";
-                value2 = "0";
-                operand1.setText(value1.toString());
-                operand2.setText(value2.toString());
+                    resetValues();
+                } else {
+                    Toast.makeText(MainActivity.this, "Please enter stuff", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        //EW. SET and REGISTER the listener both
+        btnDivide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if ((operand1.getText().length() > 0) && (operand2.getText().length() > 0)) {
+                    double double1 = validDouble(operand1.getText().toString());
+                    double double2 = validDouble(operand2.getText().toString());
+
+                    double result = double1 / double2;
+                    txtResult.setText(Double.toString(result));
+
+                    resetValues();
+                } else {
+                    Toast.makeText(MainActivity.this, "Please enter stuff", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        //EW. SET and REGISTER the listener both
+        btnMultiply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if ((operand1.getText().length()>0) && (operand2.getText().length()>0)) {
+                    double double1 = validDouble(operand1.getText().toString());
+                    double double2 = validDouble(operand2.getText().toString());
+
+                    double result = double1 * double2;
+                    txtResult.setText(Double.toString(result));
+
+                    resetValues();
+                } else {
+                    Toast.makeText(MainActivity.this, "Please enter stuff", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        btnClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetAll();
             }
         });
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                value1 += btn1.getText().toString();
+                SetNumber(btn1.getText().toString());
             }
         });
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                value1 += btn2.getText().toString();
+                SetNumber(btn2.getText().toString());
             }
         });
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                value1 += btn3.getText().toString();
+                SetNumber(btn3.getText().toString());
             }
         });
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                value1 += btn4.getText().toString();
+                SetNumber(btn4.getText().toString());
             }
         });
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                value1 += btn5.getText().toString();
+                SetNumber(btn5.getText().toString());
             }
         });
         btn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                value1 += btn6.getText().toString();
+                SetNumber(btn6.getText().toString());
             }
         });
         btn7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                value1 += btn7.getText().toString();
+                SetNumber(btn7.getText().toString());
             }
         });
         btn8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                value1 += btn8.getText().toString();
+                SetNumber(btn8.getText().toString());
             }
         });
         btn9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                value1 += btn9.getText().toString();
+                SetNumber(btn9.getText().toString());
             }
         });
         btn0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                value1 += btn0.getText().toString();
+                SetNumber(btn0.getText().toString());
             }
         });
         btnDot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                value1 += btnDot.getText().toString();
+                SetNumber(btnDot.getText().toString());
             }
         });
 
     }
 
+    protected void SetNumber(String textValue)
+    {
+        if (operand1.hasFocus()) {
+            value1 += textValue;
+            operand1.setText(value1);
+        } else {
+            value2 += textValue;
+            operand2.setText(value2);
+        }
+    }
     protected double validDouble(String entry)
     {
-        return Double.parseDouble(entry.toString());
+        return Double.parseDouble(entry);
     }
-
+    protected void resetAll(){
+        value1 = value2 = "";
+        operand1.setText(value1);
+        operand2.setText(value2);
+        txtResult.setText("0.00");
+        //focus
+        operand1.requestFocus();
+    }
+    protected void resetValues(){
+        value1 = value2 = "";
+        operand1.setText(value1);
+        operand2.setText(value2);
+        //focus
+        operand1.requestFocus();
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
