@@ -12,7 +12,9 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView operand1, operand2, txtResult;
+    private TextView operand1;
+    private TextView operand2;
+    private TextView txtResult;
     private Button btn1;
     private Button btn2;
     private Button btn3;
@@ -29,13 +31,16 @@ public class MainActivity extends AppCompatActivity {
     private Button btnDivide;
     private Button btnMultiply;
     private Button btnClear;
-    private String value1 = "";
-    private String value2 = "";
+    private String value1;
+    private String value2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        value1 = "";
+        value2 = "";
 
         operand1 = (EditText) findViewById(R.id.etxtOperand1);
         operand2 = (EditText) findViewById(R.id.etxtOperand1);
@@ -62,7 +67,10 @@ public class MainActivity extends AppCompatActivity {
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ((operand1.getText().length() > 0) && (operand2.getText().length() > 0)) {
+                if ((operand1.getText().length()>0) && (operand2.getText().length()>0)) {
+
+                    Toast.makeText(MainActivity.this, "Add it up...", Toast.LENGTH_SHORT).show();
+
                     double double1 = validDouble(operand1.getText().toString());
                     double double2 = validDouble(operand2.getText().toString());
 
@@ -80,10 +88,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if ((operand1.getText().length()>0) && (operand2.getText().length()>0)) {
+
+                    Toast.makeText(MainActivity.this, "Subtract...", Toast.LENGTH_SHORT).show();
+
                     double double1 = validDouble(operand1.getText().toString());
                     double double2 = validDouble(operand2.getText().toString());
 
-                    double result = double1 - double2;
+                    double result = (double1 - double2);
                     txtResult.setText(Double.toString(result));
 
                     resetValues();
@@ -96,11 +107,14 @@ public class MainActivity extends AppCompatActivity {
         btnDivide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ((operand1.getText().length() > 0) && (operand2.getText().length() > 0)) {
+                if ((operand1.getText().length()>0) && (operand2.getText().length()>0)) {
+
+                    Toast.makeText(MainActivity.this, "Divide...", Toast.LENGTH_SHORT).show();
+
                     double double1 = validDouble(operand1.getText().toString());
                     double double2 = validDouble(operand2.getText().toString());
 
-                    double result = double1 / double2;
+                    double result = (double1 / double2);
                     txtResult.setText(Double.toString(result));
 
                     resetValues();
@@ -114,10 +128,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if ((operand1.getText().length()>0) && (operand2.getText().length()>0)) {
+
+                    Toast.makeText(MainActivity.this, "Multiply...", Toast.LENGTH_SHORT).show();
+
                     double double1 = validDouble(operand1.getText().toString());
                     double double2 = validDouble(operand2.getText().toString());
 
-                    double result = double1 * double2;
+                    double result = (double1 * double2);
                     txtResult.setText(Double.toString(result));
 
                     resetValues();
@@ -206,29 +223,35 @@ public class MainActivity extends AppCompatActivity {
         if (operand1.hasFocus()) {
             value1 += textValue;
             operand1.setText(value1);
-        } else {
+        } else if (operand2.hasFocus()) {
             value2 += textValue;
             operand2.setText(value2);
         }
     }
     protected double validDouble(String entry)
     {
-        return Double.parseDouble(entry);
+        return (entry != null && entry != "") ? Double.parseDouble(entry) : 0.0;
     }
     protected void resetAll(){
-        value1 = value2 = "";
-        operand1.setText(value1);
-        operand2.setText(value2);
+        value1 = "";
+        value2 = "";
+        operand1.setText("");
+        operand2.setText("");
         txtResult.setText("0.00");
         //focus
         operand1.requestFocus();
+        Toast.makeText(MainActivity.this, "Did we clear it all?", Toast.LENGTH_LONG).show();
     }
     protected void resetValues(){
-        value1 = value2 = "";
-        operand1.setText(value1);
-        operand2.setText(value2);
+        value1 = "";
+        value2 = "";
+        operand1.setText("");
+        operand2.setText("");
         //focus
-        operand1.requestFocus();
+        operand1.clearFocus();
+        operand2.setFocusableInTouchMode(true);
+        operand2.requestFocus();
+        Toast.makeText(MainActivity.this, "Did we focus after reset?", Toast.LENGTH_LONG).show();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
